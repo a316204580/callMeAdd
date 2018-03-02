@@ -1,0 +1,93 @@
+$add-dot-container-h:40px;
+$dot-size:10px;
+.call-me-add{
+  position: fixed;
+  background: #cceedd;
+  cursor: pointer;
+  z-index: 2147483647;
+  padding:0;
+}
+.add-top-left{
+  top:20%;
+  left:10px;
+}
+.add-top-right{
+  top:20%;
+  right:10px;
+}
+.add-bottom-left{
+  bottom:20%;
+  left:10px;
+}
+.add-bottom-right{
+  bottom:20%;
+  right:10px;
+}
+.add-top-left .close,.add-bottom-left .close{
+  text-align: left;
+}
+.add-top-right .close,.add-bottom-right .close{
+  text-align: right;
+}
+.close{
+  width: 100%;
+  height: 20px;
+  padding:2px 0;
+  position: absolute;
+  cursor: pointer;
+  -webkit-transform: translate(0,-100%);
+  -moz-transform: translate(0,-100%);
+  -ms-transform: translate(0,-100%);
+  -o-transform: translate(0,-100%);
+  transform: translate(0,-100%);
+}
+#close-add{
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 15px black;
+}
+.call-me-add img{
+  width:100%;
+  height: 100%;
+}
+.add-img-container{
+  list-style: none;
+  margin: 0;
+  padding:0;
+  width: 100%;
+  height: 100%;
+}
+.add-img-container li{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  left: 0;
+}
+.add-dot-container{
+  z-index: 999;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: $add-dot-container-h;
+  line-height: $add-dot-container-h;
+  position: absolute;
+  bottom: 0;
+  left:0;
+  background-color: rgba(0,0,0,.3);
+  margin: 0;
+  padding:0;
+}
+.add-dot-container li{
+  width:$dot-size;
+  height: $dot-size;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: $dot-size;
+}
+#hover-dot{
+  background-color: red;
+}
