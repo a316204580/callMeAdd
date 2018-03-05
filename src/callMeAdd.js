@@ -64,6 +64,10 @@ class callMeAdd {
             let imgLi = $(`<li data-index=${i}></li>`);
             let dotLi = $(`<li data-index=${i}></li>`);
 
+            if(i===0){
+              dotLi.attr('id','hover-dot').addClass('hover-dot');
+            }
+
             this.appendSingleImg(e.adds[i], imgLi);
 
             imgLi.css('zIndex', (i + 1) ** -2);
@@ -75,6 +79,10 @@ class callMeAdd {
 
           this.setSlideShow();
 
+          if(e.a){//开启自动播放
+            this.setAutoPlay(e)
+          }
+
         } else {  //不开启轮播
           this.appendSingleImg(e.adds[0], t)
         }
@@ -84,35 +92,31 @@ class callMeAdd {
     }
   }
 
+  static setAutoPlay(o){
+    console.log('autoPlay');
+  }
+
   static setSlideShow() {
     let dotArr = $('.add-dot-container li');
     let imgArr = $('.add-img-container li');
 
     for (let i = 0, j = dotArr.length; i < j; i++) {
-      console.log(dotArr[i]);
 
       dotArr[i].addEventListener('mouseover', () => {
 
-        console.log($(dotArr[i]));
-        $(dotArr[i]).attr('id','hover-dot').addClass('hover-dot');
-
         for (let x = 0, y = imgArr.length; x < y; x++) {
+
+          $(dotArr[x]).removeAttr('id').removeClass('hover-dot');
+          $(dotArr[i]).attr('id','hover-dot').addClass('hover-dot');
+
           if(x===i){
-            $(imgArr[x]).show();
+            $(imgArr[x]).fadeIn('slow');
           }else{
-            $(imgArr[x]).hide();
+            $(imgArr[x]).fadeOut('slow');
           }
         }
       });
-
-      dotArr[i].addEventListener('mouseout', () => {
-
-        $(dotArr[i]).removeAttr('id').removeClass('hover-dot');
-
-      });
-
     }
-
   }
 
   static appendSingleImg(add, t) {
