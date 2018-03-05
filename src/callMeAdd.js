@@ -29,7 +29,7 @@ class callMeAdd {
 
     let obj = {a, w, h, sc, ss, i, c, p, adds, display};
 
-    if (display && adds[0].img) {
+    if (display && adds[0].src) {
       this.constructor.appendElement(obj);
       this.constructor.setCloseAddEvents();
     }
@@ -64,8 +64,8 @@ class callMeAdd {
             let imgLi = $(`<li data-index=${i}></li>`);
             let dotLi = $(`<li data-index=${i}></li>`);
 
-            if(i===0){
-              dotLi.attr('id','hover-dot').addClass('hover-dot');
+            if (i === 0) {
+              dotLi.attr('id', 'hover-dot').addClass('hover-dot');
             }
 
             this.appendSingleImg(e.adds[i], imgLi);
@@ -79,7 +79,7 @@ class callMeAdd {
 
           this.setSlideShow();
 
-          if(e.a){//开启自动播放
+          if (e.a) {//开启自动播放
             this.setAutoPlay(e)
           }
 
@@ -88,12 +88,48 @@ class callMeAdd {
         }
       }
     } else {
-      console.error('实例化时请务必传入广告图片信息！');
+      console.error('实例化时请务必传入广告信息！');
     }
   }
 
-  static setAutoPlay(o){
-    console.log('autoPlay');
+  static setAutoPlay(o) {
+    let t;
+    window.__index__ = 0;
+
+    startInterval();
+
+    $('#call-me-add').on('mouseover', () => {
+      stopInterval();
+    }).on('mouseout', () => {
+      startInterval();
+    });
+
+    function startInterval() {
+      let dotArr = $('.add-dot-container li');
+      let imgArr = $('.add-img-container li');
+
+      t = setInterval(() => {
+
+        window.__index__ = window.__index__ >= imgArr.length - 1 ? 0 : window.__index__ + 1;
+
+        for (let x = 0, y = imgArr.length; x < y; x++) {
+
+          $(dotArr[x]).removeAttr('id').removeClass('hover-dot');
+          $(dotArr[window.__index__]).attr('id', 'hover-dot').addClass('hover-dot');
+
+          if (x === window.__index__) {
+            $(imgArr[x]).fadeIn('slow');
+          } else {
+            $(imgArr[x]).fadeOut('slow');
+          }
+        }
+      }, o.i);
+    }
+
+    function stopInterval() {
+      clearInterval(t);
+    }
+
   }
 
   static setSlideShow() {
@@ -107,11 +143,12 @@ class callMeAdd {
         for (let x = 0, y = imgArr.length; x < y; x++) {
 
           $(dotArr[x]).removeAttr('id').removeClass('hover-dot');
-          $(dotArr[i]).attr('id','hover-dot').addClass('hover-dot');
+          $(dotArr[i]).attr('id', 'hover-dot').addClass('hover-dot');
 
-          if(x===i){
+          if (x === i) {
             $(imgArr[x]).fadeIn('slow');
-          }else{
+            window.__index__ = x;
+          } else {
             $(imgArr[x]).fadeOut('slow');
           }
         }
@@ -120,14 +157,22 @@ class callMeAdd {
   }
 
   static appendSingleImg(add, t) {
-    let img = $(`<img src=${add.img} class="singleImg">`);
 
-    //点击广告
-    img.on('click', event => {
-      event.stopPropagation();
-      event.preventDefault();
-      window.location.href = add.href;
-    });
+    let img;
+
+    if (/\.(png|jpg|jpeg|gif)$/.test(add.src)) {
+      img = $(`<img src=${add.src} class="singleImg">`);
+
+      //点击广告
+      img.on('click', event => {
+        event.stopPropagation();
+        event.preventDefault();
+        window.location.href = add.href;
+      });
+
+    } else {
+      img = $(`<iframe src="${add.src}" frameborder="0" style="width: 100%;height: 100%;border: none;" marginheight="0" allowtransparency="true" marginwidth="0"></iframe>`);
+    }
 
     t.append(img);
   }
