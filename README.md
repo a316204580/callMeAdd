@@ -47,7 +47,7 @@
  6. interval    ---- 广告轮播时间间隔 默认3000 （只有在slideShow为true时才生效）
  7. **isShow    ---- 是否显示广告** 默认false （只有此参数为true时才会显示广告窗口）
  8. className   ---- 广告控件class 默认无
- 9. position    ---- 控件显示位置 默认 bottom-right  (top-left || top-right || bottom-left || bottom-right)
+ 9. position    ---- 控件显示位置 默认 bottom-right  (top-left || top-right || bottom-left || bottom-right || middle)
  10. index      ---- 当需要配置多个广告时，必须配置此参数为唯一标识
  11. **adds     ---- 广告信息数组** 每一项 包含图片url及广告链接地址 **必需**
     adds数组的每一项都是一个对象，包括 src 和 href 两项
