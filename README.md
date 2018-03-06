@@ -39,16 +39,17 @@
     
 ----------
 ## 参数说明 ##
- 1. width ---- 广告窗口宽度 默认为120 应设置为广告图片的实际宽度或等比例缩放 （值为 int）
- 2. height ---- 广告窗口高度 默认为270 应设置为广告图片的实际高度或等比例缩放（值为 int）
- 3. showCancel ---- 是否显示关闭按钮 默认为true (true -- 显示关闭按钮；false -- 不显示关闭按钮)
+ 1. width       ---- 广告窗口宽度 默认为120 应设置为广告图片的实际宽度或等比例缩放 （值为 int）
+ 2. height      ---- 广告窗口高度 默认为270 应设置为广告图片的实际高度或等比例缩放（值为 int）
+ 3. showCancel  ---- 是否显示关闭按钮 默认为true (true -- 显示关闭按钮；false -- 不显示关闭按钮)
  4. **slideShow ---- 是否显示广告轮播** 默认为false，只显示一张广告 （当有多张广告需要显示是，应将此参数设置为true）
- 5. autoPlay ---- 广告轮播自动播放 默认true （只有在slideShow为true时才生效，设置为false时，广告不会自动轮播）
- 6. interval ---- 广告轮播时间间隔 默认3000 （只有在slideShow为true时才生效）
- 7. **isShow ---- 是否显示广告** 默认false （只有此参数为true时才会显示广告窗口）
- 8. className ---- 广告控件class 默认无
- 9. position ---- 控件显示位置 默认 bottom-right  (top-left || top-right || bottom-left || bottom-right)
- 10. **adds ---- 广告信息数组** 每一项 包含图片url及广告链接地址 **必需**
+ 5. autoPlay    ---- 广告轮播自动播放 默认true （只有在slideShow为true时才生效，设置为false时，广告不会自动轮播）
+ 6. interval    ---- 广告轮播时间间隔 默认3000 （只有在slideShow为true时才生效）
+ 7. **isShow    ---- 是否显示广告** 默认false （只有此参数为true时才会显示广告窗口）
+ 8. className   ---- 广告控件class 默认无
+ 9. position    ---- 控件显示位置 默认 bottom-right  (top-left || top-right || bottom-left || bottom-right)
+ 10. index      ---- 当需要配置多个广告时，必须配置此参数为唯一标识
+ 11. **adds     ---- 广告信息数组** 每一项 包含图片url及广告链接地址 **必需**
     adds数组的每一项都是一个对象，包括 src 和 href 两项
     
 
